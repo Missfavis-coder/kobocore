@@ -10,7 +10,7 @@ import { GoogleAuthButton } from "@/components/auth/google-auth-button";
 
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
-
+export const dynamic = "force-dynamic";
 export default function SigninPage() {
   const router = useRouter();
   const [payload, setPayload] = useState({

@@ -5,7 +5,7 @@ import { Twitter, Github, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-200 dark:bg-neutral-700/20 bg-cyan-400/10 dark:border-white/10 mt-20">
+    <footer className="border-t border-neutral-200 dark:bg-neutral-700/20 bg-cyan-50 dark:border-white/10 mt-20">
       <div className="max-w-6xl mx-auto px-6 py-16">
 
     

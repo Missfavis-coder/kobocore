@@ -125,9 +125,16 @@ export default function Header() {
                                     </Link>
                                 );
                             })}
-                            <div className="pt-4 border-t border-border flex flex-col space-y-3">
+                            <div className="pt-4 border-t border-border flex gap-2 items-center space-y-3">
+                            <button
+                        className="flex items-center gap-2"
+                     >
+                      <div onClick={toggleTheme} className="border border-neutral-400 dark:border-neutral-800 rounded-full w-8 h-8 flex items-center justify-center text-green-950 dark:text-cyan-700 cursor-pointer shadow-2xl">
+                       <Sun className=" w-4 h-4"/>
+                      </div>
+                    </button>
                                 <button
-                                    className="flex items-center text-[15px] justify-center bg-cyan-500 text-white gap-2 w-full text-center border border-border px-6 py-3 rounded-md font-medium hover:bg-cyan-400 transition-colors cursor-pointer"
+                                    className="flex items-center text-[15px] justify-center bg-cyan-500 text-white gap-2 w-full text-center border border-border px-4 py-3 rounded-md font-medium hover:bg-cyan-400 transition-colors cursor-pointer"
                                 >
                                     Get Started
                                     

@@ -53,9 +53,9 @@ const RecentTransactions = () => {
         <Link href="/transactions" className="text-sm underline cursor-pointer">See More</Link>
       </div>
 
-      <Card>
+      <Card className="scrollbar-hide">
         {/* TABLE */}
-        <Table>
+        <Table >
           <TableHeader className="bg-cyan-500">
             <TableRow >
               <TableHead className="text-white" >Date</TableHead>
@@ -70,9 +70,9 @@ const RecentTransactions = () => {
 
           <TableBody>
             {transactions.map((txn) => (
-              <TableRow key={txn.id} className="hover:bg-cyan-500/10">
+              <TableRow key={txn.id} className="hover:bg-cyan-500/10 ">
                 <TableCell>{formatDate(txn.createdAt)}</TableCell>
-                <TableCell className="font-medium">
+                <TableCell className="text-sm">
                   {txn.reference}
                 </TableCell>
                 <TableCell className="text-muted-foreground">
@@ -81,7 +81,7 @@ const RecentTransactions = () => {
                 <TableCell>{txn.type}</TableCell>
                 <TableCell
                   className={cn(
-                    "font-semibold",
+                    "font-semibold text-sm",
                     txn.type === "CREDIT"
                       ? "text-emerald-500"
                       : "text-red-500"

@@ -134,7 +134,7 @@ export default function BankCardWithTransfer() {
 
       <CardContent className="flex-1 flex flex-col justify-center items-center relative">
         <div className="relative w-full flex justify-center mt-4">
-          <div className="relative w-[90%] max-w-[390px] aspect-[1.586/1] bg-gradient-to-br from-cyan-600 to-slate-800 text-white rounded-2xl p-6 shadow-2xl z-10 flex flex-col justify-between transform transition-transform hover:-translate-y-1">
+          <div className="relative w-[90%] max-w-[410px] aspect-[1.586/1] bg-gradient-to-br from-cyan-600 to-slate-800 text-white rounded-2xl p-6 shadow-2xl z-10 flex flex-col justify-between transform transition-transform hover:-translate-y-1">
             <div className="flex justify-between items-start">
               <span className="text-xs md:text-sm font-medium opacity-90">KoboCore</span>
               <div className="w-8 h-6 md:w-10 md:h-8 bg-gradient-to-br from-yellow-300 to-yellow-500/70 rounded-md border border-white/20" />
@@ -151,7 +151,7 @@ export default function BankCardWithTransfer() {
         </div>
       </CardContent>
 
-      {/* FOOTER: QUICK TRANSFER */}
+
       <CardFooter className="flex-col items-start gap-3 mt-auto pb-10">
         <div className="flex gap-2 items-center">
           <span className="text-gray-400 uppercase font-semibold tracking-wider text-xs" >Balance: </span>

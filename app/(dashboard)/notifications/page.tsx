@@ -51,7 +51,7 @@ export default function Page() {
         <h1 className="md:text-2xl text-xl tracking-wider font-bold">
         Notifications
         </h1>
-        <p className="text-muted-foreground dark:text-neutral-500 text-xs md:text-sm mt-2 tracking-wider">Stay updated with all your transaction details and others.</p>
+        <p className="text-muted-foreground dark:text-cyan-50 text-xs md:text-sm mt-2 tracking-wider">Stay updated with all your transaction details and others.</p>
 
       </div>
       {/* Search bar with icon inside */}

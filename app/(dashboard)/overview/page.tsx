@@ -21,14 +21,14 @@ const page = () => {
       <div className="@container/main flex flex-1 flex-col ">
         <div className="flex flex-col gap-4 py-4  md:py-6 pb-8 md:pb-10">
 
-          <div className="flex-1 grid md:grid-cols-3 gap-2 ">
+          <div className="flex-1 grid lg:grid-cols-3 gap-2 ">
 
-            <div className="mx-2 mb-2">
+            <div className="mx-2 mb-2 ">
               <BankCard
               />
             </div>
 
-            <div className="md:col-span-2 flex-col " >
+            <div className="lg:col-span-2 flex-col " >
               <SectionCards />
               <ChartAreaInteractive/>
             </div>

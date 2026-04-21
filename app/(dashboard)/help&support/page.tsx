@@ -37,22 +37,22 @@ export default function SupportPage() {
   
   if (selectedArticle) {
     return (
-      <div className=" p-4 animate-in fade-in slide-in-from-bottom-4 duration-300">
+      <div className=" p-4 animate-in fade-in slide-in-from-bottom-4 duration-300 ">
         <button 
           onClick={() => setSelectedArticle(null)}
-          className="flex items-center gap-2 text-gray-500 hover:text-slate-600 mt-4 mb-8 transition-colors cursor-pointer"
+          className="flex items-center gap-2 text-gray-500 dark:text-white hover:text-slate-600 mt-4 mb-8 transition-colors cursor-pointer"
         >
           <ArrowLeft size={20} /> Back to Help Center
         </button>
-        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+        <div className="bg-white dark:bg-transparent rounded-2xl p-6 border border-gray-100 dark:border-neutral-800 shadow-sm">
           <span className="text-xs font-bold uppercase tracking-wider text-cyan-600">{selectedArticle.category}</span>
-          <h1 className="lg:text-2xl text-xl font-bold text-gray-900 mt-2 mb-2">{selectedArticle.title}</h1>
-          <p className="text-gray-600 leading-relaxed ">{selectedArticle.content}</p>
-          <div className="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between">
-            <p className="text-sm text-gray-500">Was this article helpful?</p>
+          <h1 className="lg:text-xl text-lg font-bold text-gray-900 dark:text-cyan-50 mt-2 mb-2">{selectedArticle.title}</h1>
+          <p className="text-gray-600 dark:text-white text-sm leading-relaxed ">{selectedArticle.content}</p>
+          <div className="mt-12 pt-8 border-t border-gray-100 dark:border-neutral-800 flex items-center justify-between">
+            <p className="text-sm text-gray-500 dark:text-cyan-50">Was this article helpful?</p>
             <div className="flex gap-4">
-              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50 text-sm font-medium cursor-pointer">Yes</button>
-              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50 text-sm font-medium cursor-pointer">No</button>
+              <button className="px-6 py-2 rounded-full border border-gray-200 dark:border-neutral-800 text-cyan-600 hover:bg-gray-50 dark:hover:bg-cyan-50 text-sm font-medium cursor-pointer">Yes</button>
+              <button className="px-6 py-2 rounded-full border border-gray-200 dark:border-neutral-800 text-cyan-600  hover:bg-gray-50 dark:hover:bg-cyan-50 text-sm font-medium cursor-pointer">No</button>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function SupportPage() {
         <div className=" px-4 py-6 flex justify-between items-center">
           <div>
             <h1 className="lg:text-2xl text-xl tracking-wider font-bold text-gray-900 dark:text-white">Help & Support</h1>
-            <p className="text-muted-foreground dark:text-neutral-500 text-xs md:text-sm mt-2 tracking-wider">Find answers and get help with KoboCore</p>
+            <p className="text-muted-foreground dark:text-cyan-100 text-xs md:text-sm mt-2 tracking-wider">Find answers and get help with KoboCore</p>
           </div>
         </div>
       </div>

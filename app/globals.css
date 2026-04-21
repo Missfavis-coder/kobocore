@@ -160,7 +160,7 @@
   animation-play-state: paused;
 }
 
-scrollbar-hide {
+.scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }

@@ -24,7 +24,7 @@ export default function NewsletterPage() {
   };
 
   return (
-    <div className="py-20 px-6 flex justify-center ">
+    <div className="lg:py-20 md:py-15 py-12 px-6 flex justify-center ">
       <div className="max-w-xl w-full space-y-8 text-center">
 
 
@@ -35,7 +35,7 @@ export default function NewsletterPage() {
             </div>
           </div>
 
-          <h1 className="text-3xl md:text-4xl tracking-wider md:tracking-wide font-semibold tracking-tight">
+          <h1 className="text-3xl md:text-4xl tracking-wider md:tracking-wide font-semibold">
             Stay ahead with{" "}
             <span className="text-cyan-500">Kobocore</span>
           </h1>
@@ -64,7 +64,7 @@ export default function NewsletterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-cyan-500 hover:bg-cyan-400 disabled:opacity-60 text-white text-sm px-5 py-2 rounded-md font-medium transition"
+            className="bg-cyan-500 hover:bg-cyan-400 disabled:opacity-60 text-white md:px-5 px-2 py-2 rounded-md text-sm transition"
           >
             {loading ? "..." : "Subscribe"}
           </button>
