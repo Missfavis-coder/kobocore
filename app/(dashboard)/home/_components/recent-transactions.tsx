@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { cn, formatCurr } from "@/lib/utils";
 import {
   Table,
   TableBody,
@@ -69,7 +69,7 @@ const RecentTransactions = () => {
           </TableHeader>
 
           <TableBody>
-            {transactions.map((txn) => (
+            {transactions.slice(0,4).map((txn) => (
               <TableRow key={txn.id} className="hover:bg-cyan-500/10 ">
                 <TableCell>{formatDate(txn.createdAt)}</TableCell>
                 <TableCell className="text-sm">
@@ -82,12 +82,12 @@ const RecentTransactions = () => {
                 <TableCell
                   className={cn(
                     "font-semibold text-sm",
-                    txn.type === "CREDIT"
+                    txn.type === "FUNDING"
                       ? "text-emerald-500"
                       : "text-red-500"
                   )}
                 >
-                  {formatCurrency(txn.amount, txn.type)}
+                  {formatCurr(txn.amount, txn.asset)}
                 </TableCell>
                 <TableCell>
                   <StatusBadge status={txn.status} />

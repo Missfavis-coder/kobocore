@@ -1,47 +1,100 @@
-  interface Transaction {
-    id: string;
-    reference: string;
-    type: "CREDIT" | "DEBIT";
-    amount: number;
-    status: "SUCCESS" | "PENDING" | "FAILED";
-    description: string;
-    createdAt: string;
-  }
-  export const transactions: Transaction[] = [
-    {
-      id: "txn_109283",
-      reference: "KBC-DEP-001",
-      type: "CREDIT",
-      amount: 5000000,
-      status: "SUCCESS",
-      description: "Account Funding via Paystack",
-      createdAt: "2026-03-19T14:30:00Z",
-    },
-    {
-      id: "txn_109284",
-      reference: "KBC-TRF-002",
-      type: "DEBIT",
-      amount: 125000,
-      status: "SUCCESS",
-      description: "Transfer to John Doe",
-      createdAt: "2026-03-19T16:45:12Z",
-    },
-    {
-      id: "txn_109285",
-      reference: "KBC-TRF-003",
-      type: "DEBIT",
-      amount: 800000,
-      status: "PENDING",
-      description: "Airtime Purchase",
-      createdAt: "2026-03-20T08:10:00Z",
-    },
-    {
-      id: "txn_109286",
-      reference: "KBC-TRF-004",
-      type: "DEBIT",
-      amount: 1500000,
-      status: "FAILED",
-      description: "Transfer to Jane Smith (Insufficient Funds)",
-      createdAt: "2026-03-20T09:05:22Z",
-    },
-  ];
+/**
+ * Updated to match KoboCore Domain Model (Page 15 of Architecture PDF)
+ */
+interface Transaction {
+  id: string;
+  reference: string;
+  // KoboCore Types: 
+  // FUNDING = Bank to NGN, 
+  // EXCHANGE = NGN to Points, 
+  // SETTLEMENT = Sending Points to User
+  type: "FUNDING" | "EXCHANGE" | "SETTLEMENT" | "WITHDRAWAL";
+  direction: "IN" | "OUT"; 
+  amount: number; // Always integers (Kobo/Points)
+  asset: "NGN" | "PTS";
+  // HELD: Money is locked in Escrow
+  // DISPUTED: Transaction is flagged for Admin review
+  status: "SUCCESS" | "PENDING" | "FAILED" | "HELD" | "DISPUTED";
+  description: string;
+  createdAt: string;
+}
+
+export const transactions: Transaction[] = [
+  {
+    id: "TX-KC-001",
+    reference: "KC-SET-92831",
+    description: "Escrow Transfer to @merchant_alpha",
+    type: "SETTLEMENT",
+    direction: "OUT",
+    asset: "PTS",
+    amount: 50000,
+    status: "SUCCESS",
+    createdAt: "2026-04-20T10:30:00Z",
+  },
+  {
+    id: "TX-KC-002",
+    reference: "KC-FND-11223",
+    description: "Wallet Top-up via Bank Transfer",
+    type: "FUNDING",
+    direction: "IN",
+    asset: "NGN",
+    amount: 12000000, // 120,000.00 stored as 12,000,000 (Integers only)
+    status: "SUCCESS",
+    createdAt: "2026-04-19T14:12:00Z",
+  },
+  {
+    id: "TX-KC-003",
+    reference: "KC-EXC-77889",
+    description: "NGN to Settlement Points Exchange",
+    type: "EXCHANGE",
+    direction: "OUT", // NGN goes OUT of NGN wallet, IN to Points wallet
+    asset: "NGN",
+    amount: 45000,
+    status: "SUCCESS",
+    createdAt: "2026-04-18T09:45:00Z",
+  },
+  {
+    id: "TX-KC-004",
+    reference: "KC-SET-44556",
+    description: "Active Deal with @design_pro",
+    type: "SETTLEMENT",
+    direction: "OUT",
+    asset: "PTS",
+    amount: 30000,
+    status: "HELD", // Locked in Escrow
+    createdAt: "2026-04-17T16:20:00Z",
+  },
+  {
+    id: "TX-KC-005",
+    reference: "KC-SET-99112",
+    description: "Flagged Transfer to @shady_vendor",
+    type: "SETTLEMENT",
+    direction: "OUT",
+    asset: "PTS",
+    amount: 30000,
+    status: "DISPUTED", // Under review by Admin
+    createdAt: "2026-04-16T11:05:00Z",
+  },
+  {
+    id: "TX-KC-006",
+    reference: "KC-WTH-22334",
+    description: "Bank Withdrawal Request",
+    type: "WITHDRAWAL",
+    direction: "OUT",
+    asset: "NGN",
+    amount: 8000000,
+    status: "PENDING",
+    createdAt: "2026-04-15T08:10:00Z",
+  },
+  {
+    id: "TX-KC-007",
+    reference: "KC-SET-55667",
+    description: "Automated Escrow Release (14-day limit)",
+    type: "SETTLEMENT",
+    direction: "OUT",
+    asset: "PTS",
+    amount: 150000,
+    status: "SUCCESS",
+    createdAt: "2026-04-14T19:00:00Z",
+  },
+];

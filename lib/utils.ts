@@ -15,6 +15,26 @@ export const formatToKobo = (
   }).format(amount / 100);
 }; 
 
+export const formatCurr = (
+  amount: number,
+  asset: "NGN" | "PTS",
+  direction?: "IN" | "OUT"
+) => {
+  const value = asset === "NGN" ? amount / 100 : amount;
+
+  const formatted = value.toLocaleString();
+
+  const prefix = direction
+    ? direction === "IN"
+      ? "+"
+      : "-"
+    : "";
+
+  const symbol = asset === "NGN" ? "₦" : "PTS ";
+
+  return `${prefix}${symbol}${formatted}`;
+};
+
 export const formatCurrency = (amount: number, type: "CREDIT" | "DEBIT") => {
     const naira = amount / 100;
     const formatted = naira.toLocaleString();
@@ -22,13 +42,15 @@ export const formatCurrency = (amount: number, type: "CREDIT" | "DEBIT") => {
     return type === "CREDIT" ? `+₦${formatted}` : `-₦${formatted}`;
   };
 
-export const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString("en-NG", {
+export  function formatDate(date: string | Date) {
+    const d = typeof date === "string" ? new Date(date) : date;
+  
+    return d.toLocaleDateString("en-NG", {
       day: "numeric",
       month: "short",
       year: "numeric",
     });
-  };
+  }
 
   type Transaction = {
     type: "CREDIT" | "DEBIT";

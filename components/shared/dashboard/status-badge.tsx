@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 interface Transaction {
     id: string;
     reference: string;
-    type: "CREDIT" | "DEBIT";
+    type: "FUNDING" | "EXCHANGE" | "SETTLEMENT" | "WITHDRAWAL"
     amount: number;
-    status: "SUCCESS" | "PENDING" | "FAILED";
+    status:"SUCCESS" | "PENDING" | "FAILED" | "HELD" | "DISPUTED"
     description: string;
     createdAt: string;
   }
@@ -16,6 +16,8 @@ export const StatusBadge = ({ status }: { status: Transaction["status"] }) => {
       SUCCESS: "bg-emerald-500/40 text-emerald-700 dark:text-white",
       PENDING: "bg-amber-500/40 text-amber-700 dark:text-white",
       FAILED: "bg-red-500/40 text-red-700 dark:text-white",
+      HELD: "bg-red-500/40 text-red-700 dark:text-white",
+      DISPUTED: "bg-red-500/40 text-red-700 dark:text-white",
     };
 
     return (

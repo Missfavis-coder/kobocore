@@ -7,12 +7,12 @@ export default function Hero() {
     <section className="w-full min-h-[65vh] flex items-center justify-center mt-38 px-6">
       <div className="max-w-4xl text-center space-y-6">
         
-        <h1 className="text-2xl md:text-4xl font-bold lg:leading-12 tracking-wider md:tracking-wide dark:text-white">
+        <h1 className="text-2xl md:text-4xl font-heading font-bold lg:leading-12 tracking-wider md:tracking-wide dark:text-white">
           Powering Digital Transactions <br className="md:flex hidden"/> with{" "}
           <span className="text-cyan-500 italic ">KoboCore</span>
         </h1>
 
-        <p className="text-[14px] md:text-[16px] text-gray-500 dark:text-cyan-50 font-body ">
+        <p className="text-[14px] font-body md:text-[16px] text-gray-500 dark:text-cyan-50 font-body ">
           KoboCore is a fast, secure, and scalable platform designed <br className="md:flex hidden"/> to simplify
           payments, manage transactions, <br className="md:flex hidden"/> and empower digital finance solutions.
         </p>

@@ -10,9 +10,9 @@ const TransactionContent = () => {
   
 
   return (
-    <div className="p-2 lg:p-4 md:space-y-8 space-y-6 w-full pb-8 md:pb-12">
+    <div className=" lg:p-4 md:space-y-8 space-y-6 w-full pb-8 md:pb-12">
       {/* Header */}
-      <div className="flex flex-wrap space-y-2  items-center justify-between ">
+      <div className="flex flex-wrap space-y-2 p-2  items-center justify-between ">
         <div>
           <h1 className="md:text-2xl text-xl tracking-wider font-bold">
             Transaction History

@@ -70,7 +70,7 @@ export default function Page() {
         filteredNotifications.map((notif) => (
           <Card
             key={notif.id}
-            className={`border rounded-md ${notif.read ? "border-neutral-300 bg-gray-50 dark:bg-neutral-900 dark:border-neutral-800" : "border-neutral-400 dark:border-cyan-600 bg-white dark:bg-neutral-900"} py-2`}
+            className={`border rounded-md ${notif.read ? "border-neutral-300 bg-gray-50 dark:bg-neutral-900 dark:border-neutral-800" : "border-neutral-200 dark:border-cyan-600 bg-white dark:bg-neutral-900"} py-2`}
           >
             <CardHeader className="flex items-center justify-between">
               <div className="flex items-center gap-2">

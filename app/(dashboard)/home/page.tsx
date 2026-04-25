@@ -19,6 +19,13 @@ const page = () => {
   return (
     <div className="flex bg-background flex-1 flex-col ">
       <div className="@container/main flex flex-1 flex-col ">
+      <header className="flex justify-between items-center my-4 px-2">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-wide">Welcome back, Adeshola</h1>
+          <p className="text-slate-500 dark:text-cyan-100 text-sm mt-2">Here's what's happening with your accounts today.</p>
+        </div>
+      </header>
+
         <div className="flex flex-col gap-4 py-4  md:py-6 pb-8 md:pb-10">
 
           <div className="flex-1 grid lg:grid-cols-3 gap-2 ">

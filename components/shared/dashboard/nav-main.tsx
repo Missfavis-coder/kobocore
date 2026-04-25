@@ -7,6 +7,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import { ChevronDown, ChevronUp } from "lucide-react"
@@ -28,7 +29,14 @@ export function NavMain({
   }[]
 }) {
 
-  const pathname = usePathname() 
+  const pathname = usePathname();
+    const { isMobile, setOpenMobile } = useSidebar();
+
+    const handleLinkClick = () => {
+        if (isMobile) {
+            setOpenMobile(false);
+        }
+    };
 
 
   const isActive = (url: string) => pathname === url
@@ -40,9 +48,9 @@ export function NavMain({
           const active = isActive(item.url)
 
           return (
-            <Link href={item.url} key={item.title} className="mx-2 ">
+            <Link href={item.url} key={item.title} onClick={handleLinkClick} className="mx-2 ">
               <SidebarMenuButton
-                className={`flex justify-between items-center py-6 px-4 m-1 gap-2 cursor-pointer rounded-md font-light dark:text-white text-gray-600 hover:bg-cyan-400 hover:text-white ${
+                className={`flex justify-between items-center py-6 px-4 m-1 gap-2 cursor-pointer rounded-md font-semibold dark:text-white text-gray-600 hover:bg-cyan-400 hover:text-white ${
                   active ? "bg-cyan-500 text-white" : "hover:bg-cyan-500/10 hover:text-cyan-600 dark:hover:bg-gray-800"
                 }`}
               >

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import {
@@ -30,43 +30,50 @@ import {
   ToggleGroupItem,
 } from "@/components/ui/toggle-group"
 
-export const description = "Income vs Expenses chart (2026)"
+export const description = "KoboCore Wallet Activity (Income vs Expenses)"
+
+// 🔥 REALISTIC KOBOCODE MOCK DATA (kobo-based)
 const chartData = [
-  { date: "2026-01-01", income: 1200, expense: 900 },
-  { date: "2026-01-03", income: 1800, expense: 1300 },
-  { date: "2026-01-05", income: 1500, expense: 1200 },
-  { date: "2026-01-07", income: 2200, expense: 1800 },
-  { date: "2026-01-10", income: 2000, expense: 1600 },
-  { date: "2026-01-12", income: 2500, expense: 2100 },
-  { date: "2026-01-15", income: 3000, expense: 2400 },
-  { date: "2026-01-18", income: 2800, expense: 2200 },
-  { date: "2026-01-20", income: 3200, expense: 2600 },
-  { date: "2026-01-22", income: 3600, expense: 2900 },
-  { date: "2026-01-25", income: 4000, expense: 3300 },
-  { date: "2026-01-28", income: 0, expense: 0 },
-  { date: "2026-02-01", income: 4200, expense: 3500 },
-  { date: "2026-02-05", income: 4500, expense: 3700 },
-  { date: "2026-02-10", income: 4800, expense: 3900 },
-  { date: "2026-02-15", income: 5000, expense: 4200 },
-  { date: "2026-02-20", income: 5200, expense: 4400 },
-  { date: "2026-02-25", income: 5500, expense: 4700 },
-  { date: "2026-03-01", income: 5800, expense: 5000 },
-  { date: "2026-03-05", income: 6000, expense: 5200 },
-  { date: "2026-03-10", income: 6200, expense: 5400 },
-  { date: "2026-03-15", income: 6500, expense: 5600 },
-  { date: "2026-03-20", income: 0, expense: 0 },
-  { date: "2026-03-25", income: 7000, expense: 6200 },
-  { date: "2026-03-29", income: 1200, expense: 10000 },
+  { date: "2026-01-01", income_kobo: 2500000, expense_kobo: 1200000 }, // salary + spending
+  { date: "2026-01-03", income_kobo: 0, expense_kobo: 800000 },
+  { date: "2026-01-05", income_kobo: 1200000, expense_kobo: 600000 }, // freelance payout
+  { date: "2026-01-07", income_kobo: 0, expense_kobo: 450000 },
+  { date: "2026-01-10", income_kobo: 3000000, expense_kobo: 1800000 }, // salary cycle
+  { date: "2026-01-12", income_kobo: 0, expense_kobo: 900000 },
+  { date: "2026-01-15", income_kobo: 500000, expense_kobo: 300000 }, // small transfer
+  { date: "2026-01-18", income_kobo: 0, expense_kobo: 700000 },
+  { date: "2026-01-20", income_kobo: 1500000, expense_kobo: 1100000 },
+  { date: "2026-01-22", income_kobo: 0, expense_kobo: 500000 },
+  { date: "2026-01-25", income_kobo: 4000000, expense_kobo: 2500000 }, // big inflow
+  { date: "2026-02-01", income_kobo: 0, expense_kobo: 1000000 },
+  { date: "2026-02-05", income_kobo: 2000000, expense_kobo: 1200000 },
+  { date: "2026-02-10", income_kobo: 0, expense_kobo: 900000 },
+  { date: "2026-02-15", income_kobo: 3500000, expense_kobo: 2100000 },
+  { date: "2026-02-20", income_kobo: 0, expense_kobo: 1400000 },
+  { date: "2026-02-25", income_kobo: 1800000, expense_kobo: 1300000 },
+  { date: "2026-03-01", income_kobo: 4200000, expense_kobo: 2600000 },
+  { date: "2026-03-05", income_kobo: 0, expense_kobo: 900000 },
+  { date: "2026-03-10", income_kobo: 3000000, expense_kobo: 2000000 },
+  { date: "2026-03-15", income_kobo: 0, expense_kobo: 1500000 },
+  { date: "2026-03-20", income_kobo: 2500000, expense_kobo: 1800000 },
+  { date: "2026-03-25", income_kobo: 5000000, expense_kobo: 3200000 },
+  { date: "2026-03-29", income_kobo: 1200000, expense_kobo: 4000000 }, // heavy spending day
 ]
 
-
+const formatKobo = (kobo: number) => {
+  return new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+    maximumFractionDigits: 0,
+  }).format(kobo / 100)
+}
 
 const chartConfig = {
-  income: {
+  income_kobo: {
     label: "Income",
     color: "var(--color-income)",
   },
-  expense: {
+  expense_kobo: {
     label: "Expenses",
     color: "var(--color-expense)",
   },
@@ -77,32 +84,31 @@ export function ChartAreaInteractive() {
   const [timeRange, setTimeRange] = React.useState("90d")
 
   React.useEffect(() => {
-    if (isMobile) {
-      setTimeRange("90d")
-    }
+    if (isMobile) setTimeRange("90d")
   }, [isMobile])
-
 
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date)
-    const referenceDate = new Date() 
+    const referenceDate = new Date()
 
-    let daysToSubtract = 90
-    if (timeRange === "30d") daysToSubtract = 30
-    else if (timeRange === "7d") daysToSubtract = 7
+    let days = 90
+    if (timeRange === "30d") days = 30
+    if (timeRange === "7d") days = 7
 
-    const startDate = new Date(referenceDate)
-    startDate.setDate(startDate.getDate() - daysToSubtract)
+    const start = new Date(referenceDate)
+    start.setDate(start.getDate() - days)
 
-    return date >= startDate
+    return date >= start
   })
 
   return (
     <Card className="@container/card mt-4">
       <CardHeader>
-        <CardTitle className="font-bold text-neutral-700 dark:text-white">Income vs Expenses</CardTitle>
+        <CardTitle className="font-bold text-neutral-700 dark:text-white">
+          KoboCore Wallet Activity
+        </CardTitle>
         <CardDescription>
-          Financial activity for selected period
+          Income vs Expenses (NGN • Kobo-based ledger)
         </CardDescription>
 
         <CardAction>
@@ -111,93 +117,93 @@ export function ChartAreaInteractive() {
             value={timeRange}
             onValueChange={setTimeRange}
             variant="outline"
-            className="hidden *:data-[slot=toggle-group-item]:px-4! @[767px]/card:flex"
+            className="hidden @[767px]/card:flex"
           >
-            <ToggleGroupItem value="90d">Last 3 months</ToggleGroupItem>
-            <ToggleGroupItem value="30d">Last 30 days</ToggleGroupItem>
-            <ToggleGroupItem value="7d">Last 7 days</ToggleGroupItem>
+            <ToggleGroupItem value="90d">3 Months</ToggleGroupItem>
+            <ToggleGroupItem value="30d">30 Days</ToggleGroupItem>
+            <ToggleGroupItem value="7d">7 Days</ToggleGroupItem>
           </ToggleGroup>
 
           <Select value={timeRange} onValueChange={setTimeRange}>
-            <SelectTrigger
-              className="flex w-40 @[767px]/card:hidden"
-              size="sm"
-            >
-              <SelectValue placeholder="Last 3 months" />
+            <SelectTrigger className="flex w-40 @[767px]/card:hidden" size="sm">
+              <SelectValue />
             </SelectTrigger>
-
             <SelectContent>
-              <SelectItem value="90d">Last 3 months</SelectItem>
-              <SelectItem value="30d">Last 30 days</SelectItem>
-              <SelectItem value="7d">Last 7 days</SelectItem>
+              <SelectItem value="90d">3 Months</SelectItem>
+              <SelectItem value="30d">30 Days</SelectItem>
+              <SelectItem value="7d">7 Days</SelectItem>
             </SelectContent>
           </Select>
         </CardAction>
       </CardHeader>
 
       <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
-        <ChartContainer
-          config={chartConfig}
-          className="md:h-[300px] h-[290px] w-full"
-        >
+        <ChartContainer config={chartConfig} className="h-[320px] w-full">
           <AreaChart data={filteredData}>
 
             <defs>
-              <linearGradient id="fillIncome" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#06b6d4" stopOpacity={1} />
-                <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.1} />
+              <linearGradient id="incomeFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.9} />
+                <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.05} />
               </linearGradient>
 
-              <linearGradient id="fillExpense" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#64748b" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#64748b" stopOpacity={0.1} />
+              <linearGradient id="expenseFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#64748b" stopOpacity={0.7} />
+                <stop offset="95%" stopColor="#64748b" stopOpacity={0.05} />
               </linearGradient>
             </defs>
 
-            <CartesianGrid vertical={false} />
+            <CartesianGrid vertical={false} strokeDasharray="3 3" />
 
             <XAxis
               dataKey="date"
               tickLine={false}
               axisLine={false}
-              tickMargin={8}
-              minTickGap={32}
-              tickFormatter={(value) => {
-                const date = new Date(value)
-                return date.toLocaleDateString("en-US", {
+              tickMargin={10}
+              tickFormatter={(val) =>
+                new Date(val).toLocaleDateString("en-NG", {
                   month: "short",
                   day: "numeric",
                 })
-              }}
+              }
+            />
+
+            <YAxis
+              tickFormatter={(v) => `₦${(v / 100000).toFixed(0)}k`}
+              axisLine={false}
+              tickLine={false}
             />
 
             <ChartTooltip
               cursor={false}
               content={
                 <ChartTooltipContent
-                  labelFormatter={(value) =>
-                    new Date(value).toLocaleDateString("en-US", {
+                  labelFormatter={(val) =>
+                    new Date(val).toLocaleDateString("en-NG", {
                       month: "short",
                       day: "numeric",
                     })
                   }
+                  formatter={(value) => formatKobo(Number(value))}
                   indicator="dot"
                 />
               }
             />
+
             <Area
-              dataKey="expense"
+              dataKey="expense_kobo"
               type="natural"
-              fill="url(#fillExpense)"
+              fill="url(#expenseFill)"
               stroke="var(--color-expense)"
             />
 
             <Area
-              dataKey="income"
+              dataKey="income_kobo"
               type="natural"
-              fill="url(#fillIncome)"
-              stroke="var(#64748b)"
+              fill="url(#incomeFill)"
+              stroke="var(--color-income)"
             />
+
           </AreaChart>
         </ChartContainer>
       </CardContent>
