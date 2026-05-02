@@ -10,7 +10,7 @@ export default function SecurityView({
 }) {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-      <h2 className="text-2xl font-black tracking-wide mb-2">
+      <h2 className="text-2xl font-black tracking-wide mb-2 mt-4 lg:mt-0">
         Trust Protocol
       </h2>
       <p className="text-sm text-neutral-500 dark:text-cyan-200 font-medium mb-10">

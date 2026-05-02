@@ -1,45 +1,40 @@
-import { DashboardOverviewParams, RenameMediaParams, UploadMediaParams } from "../types/dashboard";
-import { NotificationsParams } from "../types/notification";
+import type { TransactionType } from "../types/dashboard";
 
-  export const queryKeys = {
-    profile: {
-      current: () => ["profile", "current"] as const,
-    },
-    health: {
-      check: () => ["health"] as const,
-    },
-    whatsapp: {
-      status: () => ["whatsapp", "status"] as const,
-    },
-    auth: {
-      profile: ["auth", "profile"] as const,
-    },
-    dashboard: {
-      medias: {
-        get: (params?: DashboardOverviewParams) => ["dashboard", "medias", "get", params] as const,
+export const queryKeys = {
+  auth: {
+    profile: ["auth", "profile"] as const,
+  },
 
-        upload: (params?: UploadMediaParams) => 
-          ["dashboard", "medias", "upload", params] as const,
-  
-        rename: (params: RenameMediaParams) => 
-          ["dashboard", "medias", "rename", params] as const,
-  
-        delete: (id: string) => 
-          ["dashboard", "medias", "delete", id] as const,
-  
-        restore: (id: string) => 
-          ["dashboard", "medias", "restore", id] as const,
-      },
-      
-      notifications: {
-        list: (params?: NotificationsParams) => ["dashboard", "notifications", params] as const,
-        
-        markAsRead: (id: string) => 
-          ["dashboard", "notifications", "markAsRead", id] as const,
-  
-        markAllAsRead: () => 
-          ["dashboard", "notifications", "markAllAsRead"] as const,
-      }
-    },
-  } as const;
-  
+  system: {
+    health: ["system", "health"] as const,
+  },
+
+  wallet: {
+    get: () => ["wallet"] as const,
+
+    transactions: (params?: {
+      page?: number;
+      limit?: number;
+      type?: TransactionType;
+      from?: string;
+      to?: string;
+    }) => ["wallet", "transactions", params] as const,
+  },
+
+  funding: {
+    get: (id: string) => ["funding", id] as const,
+  },
+
+  transfers: {
+    list: () => ["transfers"] as const,
+    get: (id: string) => ["transfers", id] as const,
+  },
+
+  disputes: {
+    get: (id: string) => ["disputes", id] as const,
+  },
+
+  apiKeys: {
+    list: () => ["apiKeys"] as const,
+  },
+} as const;

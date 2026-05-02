@@ -180,7 +180,7 @@ function TransactionCard({
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-cyan-500/10 via-transparent to-slate-500/10" />
 
       <CardHeader className="p-0 space-y-2 relative z-10">
-        <CardDescription className="text-[8px] font-semibold uppercase tracking-widest dark:text-cyan-200 text-cyan-600 whitespace-nowrap ">
+        <CardDescription className="text-[8px] font-semibold uppercase tracking-widest dark:text-neutral-400 text-neutral-600 whitespace-nowrap ">
           {title}
           {subtitle && (
           <span className="inline-flex w-fit mt-1 px-2 py-1 rounded-md bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">

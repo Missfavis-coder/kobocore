@@ -5,16 +5,11 @@ import SettingsSidebar from "./_components/settings-sidebar";
 import AccountView from "./_components/account-view";
 import SecurityView from "./_components/security-view";
 import DeveloperView from "./_components/developer-view";
-import AppearanceView from "./_components/appearance-view";
 
-type Theme = "light" | "dark";
+
 export default function SettingsPage() {
   const [activeMenu, setActiveMenu] = useState("account");
-  const [theme, setTheme] = useState<Theme>("dark");
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-  }, [theme]);
+  
 
   // ✅ mock data
   const accountData = {
@@ -34,7 +29,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen lg:p-4 px-2 py-2 flex justify-center">
+    <div className="lg:min-h-screen min-h-[60vh] lg:p-4 px-2 py-2 flex justify-center">
       <div className="w-full grid lg:grid-cols-12 rounded-md overflow-hidden">
 
         <SettingsSidebar
@@ -43,7 +38,7 @@ export default function SettingsPage() {
           tier={2}
         />
 
-        <div className="lg:col-span-8 lg:p-6 p-4">
+        <div className="lg:col-span-8 lg:p-6 p-2">
           {activeMenu === "account" && <AccountView account={{firstName: "Favour Adeshola",
   email: "ofavourmi55@gmail.com",
   lastName: "favourdev",
@@ -57,9 +52,6 @@ export default function SettingsPage() {
   sessionTimeout: "15m",
 }} />}
           {activeMenu === "developer" && <DeveloperView dev={devData} />}
-          {activeMenu === "appearance" && (
-            <AppearanceView theme={theme} setTheme={setTheme} />
-          )}
         </div>
       </div>
     </div>

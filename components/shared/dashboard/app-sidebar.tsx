@@ -82,7 +82,7 @@ const data = {
     },
     {
       title: "Help & Support",
-      url: "/help&support",
+      url: "/help-support",
       icon: Icons.support,
     },
     {

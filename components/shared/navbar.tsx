@@ -8,6 +8,7 @@ import { SidebarTrigger } from "../ui/sidebar";
 import { Separator } from "../ui/separator";
 import Link from "next/link";
 import { useTheme } from "@/lib/hooks/use-theme";
+import { Input } from "../ui/input";
 
 const routeConfig: Record<string, { title: string; icon: JSX.Element }> = {
   dashboard: { title: "Dashboard", icon: <Home /> },
@@ -64,12 +65,12 @@ function Navbar() {
             />
           <div className="flex items-center ">
            {!isOpenMobile && (
-             <input
+             <Input
               type="text"
               placeholder="Search transactions..."
               autoComplete="off"
               className="
-              h-10 px-4 rounded-xl
+              h-10 px-4 rounded-md
               border border-neutral-300 dark:text-white dark:border-neutral-800 text-sm outline-none
               focus:ring-1 focus:border-none focus:ring-cyan-600
               transition-all md:max-w-60 max-w-50

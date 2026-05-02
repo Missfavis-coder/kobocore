@@ -1,40 +1,57 @@
 export const getBaseUrl = (): string => {
-    const fromEnv = process.env.NEXT_PUBLIC_API_URL;
-    const normalized = fromEnv ? fromEnv.replace(/\/$/, "") : undefined;
-    return normalized || "http://localhost:5500/api/v1";
-  };
-  
-  export const API_ROUTES = {
-    auth: {
-      signup: "/auth/sign-up",
-      signout: "/auth/sign-out",
-      signin: "/auth/sign-in",
-      forgotpassword: "/auth/forgot-password",
-      verifyEmail: "/auth/verify-email",
-      getProfile: "/api/v1/auth/get-profile",
-      forgotPassword: "/auth/forgot-password",
-      resetPassword: "/auth/reset-password",
-    },
-    users: {
-      get:  (id: string) => `/users/:${id}`,
-    },
+  const fromEnv = process.env.NEXT_PUBLIC_API_URL;
+  const normalized = fromEnv ? fromEnv.replace(/\/$/, "") : undefined;
+  return normalized || "http://localhost:5500/api/v1";
+};
 
-    dashboard: {
-      medias: {
-        get: "/medias",
-        upload: "/medias/upload",
-        rename: (mediaId: string) => `/medias/rename/:${mediaId}`,
-        bulkdownload: "/medias/bulk-download",
-        deleteMedia:  (id: string) => `/medias/:${id}`,
-        restoreMedia: (id: string) => `/medias/:${id}/restore`,
-        expiry:  (id: string) => `/medias/:${id}/expiry`,
-      },
+export const API_ROUTES = {
+  auth: {
+    register: "/auth/register",
+    login: "/auth/login",
+    refresh: "/auth/refresh",
+    logout: "/auth/logout",
+  },
 
-      notifications: {
-        list: "/notifications",
-        markRead: (id: string) => `notifications/:${id}/read`,
-        markAllRead: "/dashboard/notifications/mark-all-read",
-      }
-    },
-  } as const;
-  
+  wallet: {
+    get: "/wallet",
+    transactions: "/wallet/transactions",
+  },
+
+  funding: {
+    initiate: "/funding/initiate",
+    get: (id: string) => `/funding/${id}`,
+  },
+
+  transfers: {
+    create: "/transfers",
+    get: (id: string) => `/transfers/${id}`,
+    list: "/transfers",
+    release: (id: string) => `/transfers/${id}/release`,
+    receipt: (id: string) => `/transfers/${id}/receipt`,
+    dispute: (id: string) => `/transfers/${id}/dispute`,
+  },
+
+  disputes: {
+    get: (id: string) => `/disputes/${id}`,
+    evidence: (id: string) => `/disputes/${id}/evidence`,
+  },
+
+  exchange: {
+    convert: "/exchange",
+  },
+
+  withdrawals: {
+    create: "/withdrawals",
+  },
+
+  apiKeys: {
+    create: "/api-keys",
+    list: "/api-keys",
+    revoke: (id: string) => `/api-keys/${id}`,
+    exchange: "/api-keys/exchange",
+  },
+
+  system: {
+    health: "/health",
+  },
+} as const;

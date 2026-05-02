@@ -10,14 +10,8 @@ import FAQPage from "./(landing)/faq";
 
 export default function Home() {
   return (
-    <div className=" bg-cyan-50/10 font-sans dark:bg-black dark:text-white">
-      <Header/>
-      <Hero/>
-      <FeaturesPage/>
-      <Benefits/>
-      <FAQPage/>
-      <NewsletterPage/>
-      <Footer/>
+    <div className="  ">
+        coming soon...
     </div>
   );
 }

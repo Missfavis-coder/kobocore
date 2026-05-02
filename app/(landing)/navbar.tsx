@@ -28,7 +28,7 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-4 md:px-6 py-2.5 md:py-4 flex items-center justify-between border border-neutral-200 rounded-full bg-card dark:bg-neutral-800/50 backdrop-blur-lg dark:border-neutral-800">
                 <div className="flex items-center">
                     <Link href="/">
-                       <span className="font-bold text-[16px]"><span className="text-cyan-500">Kobo</span>Core</span>
+                       <span className="font-bold text-[16px]">KoboCore</span>
                     </Link>
                 </div>
 
@@ -60,7 +60,7 @@ export default function Header() {
                     </button>
                     <button
                         onClick={() => (router.push("/login"))}
-                        className="p-2 bg-cyan-500 text-sm text-white rounded-md transition-colors text-bold cursor-pointer hover:bg-cyan-400"
+                        className="px-4 py-2.5 bg-cyan-500 text-sm text-white rounded-full transition-colors text-bold cursor-pointer hover:bg-cyan-400"
                         aria-label="Support"
                     >
                         Get Started

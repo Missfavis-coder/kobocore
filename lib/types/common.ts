@@ -1,13 +1,15 @@
+export type ID = string;
 
-export type NotificationStatus = "success" | "error" | "pending";
+export type Timestamp = string; 
 
-export interface PaginatedResponse<T> {
+export type PaginationParams = {
+  page?: number;
+  limit?: number;
+};
+
+export type PaginatedResponse<T> = {
   data: T[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
-  unreadCount: number;
-}
+  page: number;
+  limit: number;
+  total: number;
+};

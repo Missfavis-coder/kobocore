@@ -1,57 +1,43 @@
-// types/auth.ts
+import { ID } from "./common";
 
-export interface User {
-    _id: string;
-    name: string;
-    email: string;
-    createdAt: string;
-    updatedAt: string;
-    // password is never returned
-  }
-  
-  export interface SignUpParams {
-    name: string;
-    email: string;
-    password: string;
-  }
-  
-  export interface SignUpResponse {
-    success: boolean;
-    message: string;
-    data: {
-      token: string;
-      user: User;
-    };
-  }
-  
-  export interface SignInParams {
-    email: string;
-    password: string;
-  }
-  
-  export interface SignInResponse {
-    success: boolean;
-    message: string;
-    data: {
-      token: string;
-      user: User;
-    };
-  }
-  
-  export interface SignOutResponse {
-    message: string;
-  }
-  
-  export interface ProfileResponse {
-    user: User;
-  }
-  
-  export interface ForgotPasswordParams {
-    email: string;
-  }
-  
-  export interface ResetPasswordParams {
-    token: string;
-    newPassword: string;
-  }
-  
+export type User = {
+  id: ID;
+  email: string;
+  full_name: string;
+};
+
+export type RegisterParams = {
+  email: string;
+  password: string;
+  full_name: string;
+};
+
+export type RegisterResponse = {
+  user: User;
+  accessToken: string;
+  refreshToken: string;
+};
+
+export type LoginParams = {
+  email: string;
+  password: string;
+};
+
+export type LoginResponse = {
+  accessToken: string;
+  refreshToken: string;
+  user: User;
+};
+
+export type RefreshParams = {
+  refreshToken: string;
+};
+
+export type RefreshResponse = {
+  accessToken: string;
+  refreshToken: string;
+};
+
+export type LogoutParams = {
+  refreshToken: string;
+};

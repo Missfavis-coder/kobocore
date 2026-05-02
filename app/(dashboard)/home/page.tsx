@@ -22,7 +22,7 @@ const page = () => {
       <header className="flex justify-between items-center my-4 px-2">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-wide">Welcome back, Adeshola</h1>
-          <p className="text-slate-500 dark:text-cyan-100 text-sm mt-2">Here's what's happening with your accounts today.</p>
+          <p className="text-neutral-500 dark:text-cyan-100 text-sm mt-2">Here's what's happening with your accounts today.</p>
         </div>
       </header>
 

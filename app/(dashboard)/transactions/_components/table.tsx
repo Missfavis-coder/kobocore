@@ -56,7 +56,7 @@ const TransactionTable = () => {
   const [search, setSearch] = useState("");
 
   React.useEffect(() => {
-    if (isMobile) setTimeRange("7d");
+    if (isMobile) setTimeRange("90d");
   }, [isMobile]);
 
   const itemsPerPage = 7;
@@ -257,7 +257,7 @@ const TransactionTable = () => {
       </TableCell>
     </TableRow>
   ) :
-            (currentItems.map((txn) => (
+            (currentItems.slice(0,5).map((txn) => (
               <TableRow key={txn.id} className="hover:bg-cyan-500/10">
                 <TableCell>{formatDate(txn.createdAt)}</TableCell>
                 <TableCell className="font-medium">{txn.reference}</TableCell>

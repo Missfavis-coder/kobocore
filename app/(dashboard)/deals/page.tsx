@@ -93,7 +93,7 @@ export default function MyDealsPage() {
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
             My Deals
           </h1>
-          <p className="text-slate-500 dark:text-cyan-100 text-sm mt-2">
+          <p className="text-neutral-500 dark:text-cyan-100 text-sm mt-2">
             Review, approve, or challenge your active settlements.
           </p>
         </div>
@@ -110,7 +110,7 @@ export default function MyDealsPage() {
 
   <input
     placeholder="Search ID or user..."
-    className="w-full h-11 pl-9 pr-3 rounded-xl border dark:text-white border-slate-200 dark:border-neutral-800 bg-transparent text-sm outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-300 transition-all dark:shadow-sm"
+    className="w-full h-11 pl-9 pr-3 text-sm rounded-xl border dark:text-white border-slate-200 dark:border-neutral-800 bg-transparent text-sm outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-300 transition-all dark:shadow-sm"
   />
 </div>
 
