@@ -98,13 +98,14 @@ export default function SigninPage() {
                 <input type="checkbox" className="w-4 h-4 " autoComplete="off" />
                 <span className="text-gray-500 dark:text-neutral-400">Remember me</span>
               </label>
-              <Link href="/forgot-password" className="text-primary-500 hover:text-slate-700 dark:hover:text-slate-600 font-medium">
+              <Link href="/login" className="text-primary-500 hover:text-slate-700 dark:hover:text-slate-600 font-medium">
                 Forgot password?
               </Link>
             </div>
 
             <button
               type="submit"
+              onClick={(()=>{router.push("/login")})}
               className="w-full h-12 flex items-center justify-center bg-gradient-to-r from-cyan-500 to-slate-800 hover:opacity-90 text-white font-semibold rounded-full transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               disabled={isLoading}
             >
@@ -130,22 +131,20 @@ export default function SigninPage() {
           </div>
 
           {/* Google Auth Button */}
-          <GoogleAuthButton 
-            text="Continue with Google"
-            onSuccess={(user) => {
-              console.log("Google auth success:", user);
-              router.push('/dashboard');
-            }}
-            onError={(error) => {
-              console.error("Google auth error:", error);
-              setError(typeof error === 'string' ? error : 'Google authentication failed. Please try again.');
-            }}
-          />
+          
+<GoogleAuthButton
+  text="Continue with Google"
+  onError={(error) => {
+    console.error("Google auth error:", error);
+    setError(error.message);
+  }}
+/>
+
 
           <div className="mt-4 text-center text-sm">
             <p className="text-neutral-600  dark:text-neutral-400">
               Don't have an account?{" "}
-              <Link href="/sIgnup" className="text-neutral-800 dark:text-white hover:text-slate-800 font-semibold transition-colors">
+              <Link href="#" className="text-neutral-800 dark:text-white hover:text-slate-800 font-semibold transition-colors">
                 Create account
               </Link>
             </p>

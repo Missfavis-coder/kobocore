@@ -39,11 +39,6 @@ const Icons = {
 
 
 const data = {
-  user: {
-    name: "Ojo Adeshola",
-    email: "ofavourmi55@gmail.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
 
   teams: [
     {
@@ -105,7 +100,7 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
 
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser  />
       </SidebarFooter>
 
       <SidebarRail />
