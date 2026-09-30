@@ -1,82 +1,106 @@
 "use client";
 
-import { ShieldCheck, Wallet, Send, Link, BarChart3, Code } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Database,
+  Lock,
+  ShieldCheck,
+  RefreshCw,
+  Scale,
+  FileCode2,
+} from "lucide-react";
 
 const features = [
   {
+    icon: Database,
+    title: "Track Your Money",
+    description: "See your money and points in one simple place.",
+  },
+  {
+    icon: Lock,
+    title: "Keep Money Safe",
+    description: "Your money stays safe until a payment is ready.",
+  },
+  {
     icon: ShieldCheck,
-    title: "Secure Transactions",
-    description:
-      "Every transaction is protected with modern security standards to keep your funds safe.",
+    title: "Safe Payments",
+    description: "Every payment is checked to help prevent mistakes.",
   },
   {
-    icon: Wallet,
-    title: "Smart Wallet",
-    description:
-      "Manage your balance, deposits, and withdrawals in one simple interface.",
+    icon: RefreshCw,
+    title: "No Double Payments",
+    description: "Payments won't be sent twice by mistake.",
   },
   {
-    icon: Send,
-    title: "Instant Transfers",
-    description:
-      "Send and receive money instantly with zero stress and real-time updates.",
+    icon: Scale,
+    title: "Fix Payment Problems",
+    description: "Get help when a payment goes wrong.",
   },
   {
-    icon: Link,
-    title: "Payment Links",
-    description:
-      "Create simple payment links and get paid anywhere, anytime.",
-  },
-  {
-    icon: BarChart3,
-    title: "Transaction Insights",
-    description:
-      "Track your spending and earnings with clear and simple analytics.",
-  },
-  {
-    icon: Code,
-    title: "Developer API",
-    description:
-      "Integrate KoboCore into your apps with a clean and powerful API.",
+    icon: FileCode2,
+    title: "Easy to Connect",
+    description: "Businesses can easily connect their apps to the platform.",
   },
 ];
 
 export default function FeaturesPage() {
   return (
-    <div className="bg-white dark:bg-black text-black dark:text-white">
-      
-    
-      <section className="py-20 text-center max-w-4xl mx-auto px-4">
-        <h1 className="text-2xl md:text-4xl font-heading tracking-wider md:tracking-wide font-semibold mb-6">
-          Powerful features built for <br className="md:flex hidden"/> modern payments
-        </h1>
-        <p className="text-[15px] md:text-[16px] text-gray-600 dark:text-neutral-300">
-          KoboCore gives you everything  <br className="md:hidden flex"/> you need to send, <br className="md:flex hidden"/> receive, and  manage money effortlessly.
-        </p>
+    <div className="min-h-screen">
+
+      {/* HEADER */}
+      <section className="py-28 text-center px-6 relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 10 }}
+          transition={{ duration: 0.6 }}
+          className="relative max-w-3xl mx-auto"
+        >
+          <h1 className="text-4xl md:text-3xl lg:text-5xl font-semibold leading-tight">
+            Simple, safe and{" "}
+            <span className="text-cyan-400 italic">easy payments</span>
+          </h1>
+
+          <p className="mt-6 text-sm md:text-base dark:text-neutral-500 text-neutral-400">
+            A simple way to send, receive and keep track of your money.
+          </p>
+        </motion.div>
       </section>
 
+      {/* FEATURES */}
+      <section className="max-w-6xl mx-auto px-6 pb-28">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-      <section className="max-w-6xl mx-auto px-4 pb-20">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+
             return (
-              <div
+              <motion.div
                 key={index}
-                className="p-6 rounded-2xl border border-gray-200 dark:border-zinc-800 hover:shadow-lg transition"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                whileHover={{ y: -6 }}
+                className="relative p-4 rounded-xl border dark:border-white/10 border-neutral-200 dark:backdrop-blur-md"
               >
-                <div className="mb-4">
-                  <Icon className="w-8 h-8 text-cyan-500" />
+                {/* ICON */}
+                <div className="w-11 h-11 flex items-center justify-center mb-2">
+                  <Icon className="w-5 h-5 text-cyan-400" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">
+
+                {/* TITLE */}
+                <h3 className="text-base font-semibold mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-gray-500 dark:text-zinc-400 text-sm">
+
+                {/* DESCRIPTION */}
+                <p className="text-sm dark:text-neutral-500 text-neutral-400 leading-relaxed">
                   {feature.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
+
         </div>
       </section>
     </div>

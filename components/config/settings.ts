@@ -8,7 +8,6 @@ export const settings = {
   
   export const navigationLink = [
     {name: "home",link:"/"},
-    {name: "pricing",link:"/pricing"},
-    {name: "security",link:"/security"},
-    {name: "privacy",link:"/privacy"}
+    {name: "who it's for",link:"/built-for"},
+    {name: "privacy",link:"/privacy"},
   ] as const

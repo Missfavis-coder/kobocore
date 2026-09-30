@@ -17,7 +17,7 @@ const TransactionContent = () => {
           <h1 className="md:text-2xl text-xl tracking-wider font-bold">
             Transaction History
           </h1>
-          <p className="text-neutral-500 dark:text-cyan-100 text-sm mt-2">
+          <p className="text-neutral-500 dark:text-neutral-300 text-sm mt-2">
             Manage your income and transactions history.
           </p>
         </div>

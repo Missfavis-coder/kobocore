@@ -89,7 +89,7 @@ export function ChartAreaInteractive() {
 
   const filteredData = chartData.filter((item) => {
     const date = new Date(item.date)
-    const referenceDate = new Date()
+    const referenceDate = new Date("2026-03-29")
 
     let days = 90
     if (timeRange === "30d") days = 30

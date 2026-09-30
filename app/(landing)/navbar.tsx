@@ -25,10 +25,10 @@ export default function Header() {
 
 	return (
         <header className="fixed top-4 md:top-8 left-0 right-0 z-50 px-4">
-            <div className="max-w-7xl mx-auto px-4 md:px-6 py-2.5 md:py-4 flex items-center justify-between border border-neutral-200 rounded-full bg-card dark:bg-neutral-800/50 backdrop-blur-lg dark:border-neutral-800">
+            <div className="max-w-4xl mx-auto px-4 md:px-6 py-2.5 md:py-4 flex items-center justify-between border border-neutral-200 rounded-full bg-card dark:bg-neutral-800/50 backdrop-blur-lg dark:border-neutral-800">
                 <div className="flex items-center">
                     <Link href="/">
-                       <span className="font-bold text-[16px]">KoboCore</span>
+                       <span className="font-bold text-[18px]">KoboCore</span>
                     </Link>
                 </div>
 

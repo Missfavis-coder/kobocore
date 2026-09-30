@@ -40,7 +40,7 @@ export default function NewsletterPage() {
             <span className="text-cyan-500">Kobocore</span>
           </h1>
 
-          <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-400 max-w-md mx-auto">
+          <p className="text-sm md:text-base dark:text-neutral-500 text-neutral-400 max-w-md mx-auto">
             Product updates, feature drops, and fintech insights — no noise.
           </p>
         </div>

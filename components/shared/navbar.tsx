@@ -63,22 +63,9 @@ function Navbar() {
               orientation="vertical"
               className="mr-2 data-vertical:h-4 dark:border-neutral-600 data-vertical:self-auto"
             />
-          <div className="flex items-center ">
-           {!isOpenMobile && (
-             <Input
-              type="text"
-              placeholder="Search transactions..."
-              autoComplete="off"
-              className="
-              h-10 px-4 rounded-md
-              border border-neutral-300 dark:text-white dark:border-neutral-800 text-sm outline-none
-              focus:ring-1 focus:border-none focus:ring-cyan-600
-              transition-all md:max-w-60 max-w-50
-              "
-             />
-           )}
-          </div>
+             <div className="text-sm font-bold font-body capitalize text-foreground">{last}</div>
         </div>
+
         <div className="flex md:gap-6 gap-2">
          {/* Right */}
          <div className="flex items-center gap-2">

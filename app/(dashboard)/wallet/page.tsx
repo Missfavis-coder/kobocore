@@ -10,6 +10,7 @@ import { TransferForm } from "./_components/transfer-form";
 import { EscrowTable } from "./_components/escrow-table";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 export default function Page() {
   const router = useRouter();
@@ -68,7 +69,7 @@ export default function Page() {
         payment_url: "https://mock-payments.kobocore.io/pay",
         bank_name: "KoboCore Bank",
         account_number: "0123456789",
-        account_name: "Ojo Adesola",
+        account_name: "Ojo Adeshola",
       });
       setLoading(false);
     }, 2000);
@@ -320,6 +321,49 @@ export default function Page() {
           </div>
         </div>
       )}
+      {openModal && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+    <div className="bg-white dark:bg-neutral-900 w-[90%] max-w-md rounded-2xl p-6 space-y-5 shadow-xl border dark:border-neutral-800">
+
+      <h2 className="text-lg font-bold">Fund Wallet</h2>
+
+      {/* Loading */}
+      {loading && (
+        <div className="flex items-center justify-center py-10">
+          <Loader2 className="animate-spin" />
+        </div>
+      )}
+
+      {/* Funding Data */}
+      {fundingData && (
+        <div className="space-y-3 text-sm">
+          <p><strong>Bank:</strong> Paystack</p>
+          <p><strong>Account Number:</strong> {fundingData.account_number}</p>
+          <p><strong>Name:</strong> {fundingData.account_name}</p>
+
+          <a
+            href={fundingData.payment_url}
+            target="_blank"
+            className="block text-center mt-4 py-3 bg-cyan-500 text-white rounded-xl"
+          >
+            Proceed to Payment
+          </a>
+        </div>
+      )}
+
+      {/* Close */}
+      <Button
+        onClick={() => {
+          setOpenModal(false);
+          setFundingData(null);
+        }}
+        className="w-full py-6 border rounded-xl "
+      >
+        Close
+      </Button>
+    </div>
+  </div>
+)}
     </div>
   );
 }

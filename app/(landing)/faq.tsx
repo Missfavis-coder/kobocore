@@ -44,10 +44,10 @@ export default function FAQPage() {
 
         {/* HEADER */}
         <div className="text-center space-y-3">
-          <h1 className="text-2xl md:text-4xl font-heading  tracking-wider md:tracking-wide font-semibold">
+          <h1 className="text-2xl md:text-4xl tracking-wider md:tracking-wide font-semibold">
             Frequently Asked Questions
           </h1>
-          <p className="text-neutral-500 dark:text-neutral-400 text-sm md:text-base">
+          <p className="dark:text-neutral-500 text-neutral-400 text-sm md:text-base">
             Everything you need to know about Kobocore.
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function FAQPage() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-4 text-sm text-neutral-500 dark:text-neutral-400">
+                    <p className="px-5 pb-4 text-sm dark:text-neutral-500 text-neutral-400">
                       {faq.answer}
                     </p>
                   </div>
